@@ -34,81 +34,304 @@
         height: 300px;
         max-width: 95vw;
         border: 3px solid #333;
-        background: white;
+        background: linear-gradient(180deg, #cdeab0 0%, #e6f5d6 55%, #f3f8ec 100%);
         overflow: hidden;
     }
+
+    /* =========================
+       FONDO DE JUNGLA
+    ========================= */
+
+    #fondo {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .arbol {
+        position: absolute;
+        bottom: 43px;
+        width: 14px;
+        height: 0;
+    }
+
+    .arbol::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 5px;
+        width: 4px;
+        height: 40px;
+        background: #6b4423;
+        border-radius: 2px;
+    }
+
+    .arbol::after {
+        content: "";
+        position: absolute;
+        bottom: 34px;
+        left: -10px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #4a7c3c;
+        box-shadow:
+            -14px 6px 0 -4px #3f6b30,
+             14px 4px 0 -4px #578f45,
+             0 -8px 0 -6px #63a04d;
+    }
+
+    .arbol1 { left: 30px;  transform: scale(0.85); opacity: 0.85; }
+    .arbol2 { left: 190px; transform: scale(1.1); }
+    .arbol3 { left: 430px; transform: scale(0.9);  opacity: 0.85; }
+    .arbol4 { left: 640px; transform: scale(1.15); }
+    .arbol5 { left: 730px; transform: scale(0.8); opacity: 0.8; }
 
     #suelo {
         position: absolute;
         bottom: 40px;
         left: 0;
         width: 100%;
-        height: 3px;
-        background: #333;
+        height: 4px;
+        background: #7a5230;
+        z-index: 1;
     }
+
+    #suelo::before {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #5c8a3c;
+    }
+
+    /* =========================
+       T-REX
+    ========================= */
 
     #dino {
         position: absolute;
         left: 80px;
         bottom: 43px;
-        width: 45px;
-        height: 55px;
-        background: #333;
-        border-radius: 8px 8px 3px 3px;
+        width: 62px;
+        height: 60px;
+        z-index: 2;
     }
 
-    /* Ojo */
-    #dino::before {
+    #dino::after {
+        /* patas */
         content: "";
         position: absolute;
-        width: 7px;
-        height: 7px;
-        background: white;
-        right: 7px;
-        top: 10px;
+        width: 9px;
+        height: 16px;
+        background: #2c4f2c;
+        bottom: -14px;
+        left: 14px;
+        border-radius: 2px;
+        box-shadow: 16px 0 #2c4f2c;
+    }
+
+    .dino-cuerpo {
+        position: absolute;
+        width: 32px;
+        height: 26px;
+        left: 0;
+        bottom: 14px;
+        background: #3f6b3f;
+        border-radius: 50% 60% 40% 50% / 60% 50% 50% 40%;
+    }
+
+    .dino-cabeza {
+        position: absolute;
+        width: 26px;
+        height: 20px;
+        right: 0;
+        top: 2px;
+        background: #3f6b3f;
+        border-radius: 45% 55% 50% 50% / 55% 60% 40% 45%;
+    }
+
+    .dino-mandibula {
+        position: absolute;
+        width: 16px;
+        height: 8px;
+        right: -8px;
+        top: 14px;
+        background: #3f6b3f;
+        border-radius: 0 6px 6px 0;
+    }
+
+    .dino-mandibula::after {
+        /* diente */
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-left: 4px solid #fff;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+    }
+
+    .dino-ojo {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        right: 8px;
+        top: 6px;
+        background: #fff;
         border-radius: 50%;
     }
 
-    /* Piernas */
-    #dino::after {
+    .dino-ojo::after {
         content: "";
         position: absolute;
-        width: 12px;
-        height: 18px;
-        background: #333;
-        bottom: -13px;
-        left: 7px;
-        box-shadow: 20px 0 #333;
+        width: 3px;
+        height: 3px;
+        left: 2px;
+        top: 2px;
+        background: #111;
+        border-radius: 50%;
     }
 
-    #cactus {
+    .dino-brazo {
+        position: absolute;
+        width: 10px;
+        height: 4px;
+        left: 26px;
+        bottom: 20px;
+        background: #3f6b3f;
+        border-radius: 2px;
+        transform: rotate(-20deg);
+    }
+
+    .dino-cola {
+        position: absolute;
+        left: -18px;
+        bottom: 16px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 20px 10px 0;
+        border-color: transparent #3f6b3f transparent transparent;
+        transform: rotate(15deg);
+    }
+
+    /* =========================
+       CAZADOR (OBSTÁCULO)
+    ========================= */
+
+    #cazador {
         position: absolute;
         right: -40px;
         bottom: 43px;
-        width: 30px;
-        height: 55px;
-        background: #248b35;
-        border-radius: 5px;
+        width: 36px;
+        height: 60px;
+        z-index: 2;
     }
 
-    #cactus::before,
-    #cactus::after {
+    #cazador::after {
+        /* piernas */
         content: "";
         position: absolute;
-        background: #248b35;
+        width: 6px;
+        height: 16px;
+        background: #3a3a3a;
+        bottom: -14px;
+        left: 11px;
+        border-radius: 2px;
+        box-shadow: 8px 0 #3a3a3a;
+    }
+
+    .cazador-torso {
+        position: absolute;
+        width: 18px;
+        height: 24px;
+        left: 9px;
+        bottom: 14px;
+        background: #4a5d23;
+        border-radius: 4px;
+    }
+
+    .cazador-torso::after {
+        /* cinturón */
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 6px;
+        width: 100%;
+        height: 3px;
+        background: #3a3a3a;
+    }
+
+    .cazador-cabeza {
+        position: absolute;
         width: 14px;
-        height: 28px;
-        border-radius: 5px;
+        height: 14px;
+        left: 11px;
+        top: 6px;
+        background: #e0ac69;
+        border-radius: 50%;
     }
 
-    #cactus::before {
-        left: -10px;
-        top: 20px;
+    .cazador-sombrero {
+        position: absolute;
+        left: 8px;
+        top: 1px;
+        width: 18px;
+        height: 8px;
+        background: #5a4632;
+        border-radius: 8px 8px 0 0;
     }
 
-    #cactus::after {
-        right: -10px;
-        top: 10px;
+    .cazador-sombrero::after {
+        /* ala del sombrero */
+        content: "";
+        position: absolute;
+        left: -4px;
+        bottom: 0;
+        width: 26px;
+        height: 3px;
+        background: #5a4632;
+        border-radius: 2px;
+    }
+
+    .cazador-brazo {
+        position: absolute;
+        width: 12px;
+        height: 5px;
+        left: -3px;
+        bottom: 25px;
+        background: #3a4d1a;
+        border-radius: 2px;
+        transform: rotate(-8deg);
+    }
+
+    .cazador-arma {
+        position: absolute;
+        width: 26px;
+        height: 3px;
+        left: -20px;
+        bottom: 27px;
+        background: #2b2b2b;
+        border-radius: 1px;
+    }
+
+    .cazador-arma::after {
+        /* culata */
+        content: "";
+        position: absolute;
+        right: -6px;
+        top: -2px;
+        width: 8px;
+        height: 7px;
+        background: #4a3a20;
+        border-radius: 2px;
     }
 
     #puntos {
@@ -117,6 +340,10 @@
         right: 20px;
         font-size: 20px;
         font-weight: bold;
+        background: rgba(255, 255, 255, 0.75);
+        padding: 2px 8px;
+        border-radius: 4px;
+        z-index: 3;
     }
 
     #mensaje {
@@ -126,6 +353,14 @@
         text-align: center;
         font-size: 24px;
         font-weight: bold;
+        z-index: 3;
+    }
+
+    #mensaje span {
+        background: rgba(255, 255, 255, 0.85);
+        padding: 8px 16px;
+        border-radius: 6px;
+        display: inline-block;
     }
 
     #instrucciones {
@@ -156,15 +391,36 @@
 
     <div id="juego">
 
+        <div id="fondo">
+            <div class="arbol arbol1"></div>
+            <div class="arbol arbol2"></div>
+            <div class="arbol arbol3"></div>
+            <div class="arbol arbol4"></div>
+            <div class="arbol arbol5"></div>
+        </div>
+
         <div id="puntos">00000</div>
 
         <div id="mensaje">
-            Presiona ESPACIO para comenzar
+            <span>Presiona ESPACIO para comenzar</span>
         </div>
 
-        <div id="dino"></div>
+        <div id="dino">
+            <div class="dino-cuerpo"></div>
+            <div class="dino-cabeza"></div>
+            <div class="dino-mandibula"></div>
+            <div class="dino-ojo"></div>
+            <div class="dino-brazo"></div>
+            <div class="dino-cola"></div>
+        </div>
 
-        <div id="cactus"></div>
+        <div id="cazador">
+            <div class="cazador-sombrero"></div>
+            <div class="cazador-cabeza"></div>
+            <div class="cazador-torso"></div>
+            <div class="cazador-brazo"></div>
+            <div class="cazador-arma"></div>
+        </div>
 
         <div id="suelo"></div>
 
@@ -181,7 +437,7 @@
 <script>
 
 const dino = document.getElementById("dino");
-const cactus = document.getElementById("cactus");
+const cazador = document.getElementById("cazador");
 const puntosTexto = document.getElementById("puntos");
 const mensaje = document.getElementById("mensaje");
 
@@ -192,7 +448,7 @@ let gameOver = false;
 let dinoY = 0;
 let velocidadY = 0;
 
-let cactusX = 800;
+let cazadorX = 800;
 
 let puntos = 0;
 let velocidad = 6;
@@ -273,13 +529,13 @@ function bucle(tiempo) {
         `translateY(${-dinoY}px)`;
 
 
-    /* ----- CACTUS ----- */
+    /* ----- CAZADOR ----- */
 
-    cactusX -= velocidad * dt;
+    cazadorX -= velocidad * dt;
 
-    if (cactusX < -50) {
+    if (cazadorX < -50) {
 
-        cactusX = 800 + Math.random() * 300;
+        cazadorX = 800 + Math.random() * 300;
 
         puntos++;
 
@@ -294,21 +550,21 @@ function bucle(tiempo) {
         }
     }
 
-    cactus.style.left = cactusX + "px";
+    cazador.style.left = cazadorX + "px";
 
 
     /* ----- COLISIÓN ----- */
 
     const dinoRect = dino.getBoundingClientRect();
-    const cactusRect = cactus.getBoundingClientRect();
+    const cazadorRect = cazador.getBoundingClientRect();
 
     const margen = 8;
 
     const colision =
-        dinoRect.right - margen > cactusRect.left &&
-        dinoRect.left + margen < cactusRect.right &&
-        dinoRect.bottom - margen > cactusRect.top &&
-        dinoRect.top + margen < cactusRect.bottom;
+        dinoRect.right - margen > cazadorRect.left &&
+        dinoRect.left + margen < cazadorRect.right &&
+        dinoRect.bottom - margen > cazadorRect.top &&
+        dinoRect.top + margen < cazadorRect.bottom;
 
 
     if (colision) {
@@ -334,8 +590,8 @@ function terminar() {
     mensaje.style.display = "block";
 
     mensaje.innerHTML =
-        "💥 GAME OVER<br>" +
-        "<small>Presiona ESPACIO para volver a jugar</small>";
+        "<span>💥 GAME OVER<br>" +
+        "<small>Presiona ESPACIO para volver a jugar</small></span>";
 }
 
 
@@ -352,20 +608,20 @@ function reiniciar() {
     dinoY = 0;
     velocidadY = 0;
 
-    cactusX = 800;
+    cazadorX = 800;
 
     puntos = 0;
     velocidad = 6;
 
     puntosTexto.textContent = "00000";
 
-    cactus.style.left = cactusX + "px";
+    cazador.style.left = cazadorX + "px";
 
     dino.style.transform = "translateY(0)";
 
     mensaje.style.display = "block";
     mensaje.innerHTML =
-        "Presiona ESPACIO para comenzar";
+        "<span>Presiona ESPACIO para comenzar</span>";
 }
 
 
